@@ -13,6 +13,7 @@ public class Toxine : MonoBehaviour {
     void Start()
     {
         transform.position = spawnPosition;
+        gameObject.layer = Layers.Toxine;
         _iRotable = new ToxineRotable(0.1f, transform);
     }
 
@@ -52,7 +53,7 @@ public class Toxine : MonoBehaviour {
     public Toxine SetSprite(SpriteRenderer s)
     {
         sprite = s;
-        sprite.sortingOrder = Layers.Toxine;
+        sprite.sortingOrder = OrderLayers.Toxine;
         return this;
     }
 }
