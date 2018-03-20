@@ -39,6 +39,7 @@ public class ContrainsController : MonoBehaviour {
         {
             if (gameObject.layer == Layers.Toxine)
             {
+                gameObject.GetComponent<Toxine>().SetPosition();
                 ToxineManager.Instance.ReturnToxineToPool(GetComponent<Toxine>());
             }
         }

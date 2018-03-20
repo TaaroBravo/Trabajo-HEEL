@@ -9,9 +9,13 @@ public class Toxine : MonoBehaviour {
     private SpriteRenderer sprite;
 
     private IRotable _iRotable;
+    private Transform downCollider;
 	
     void Start()
     {
+        float x = Random.Range(downCollider.position.x - downCollider.GetComponent<Collider2D>().bounds.extents.x, downCollider.position.x + downCollider.GetComponent<Collider2D>().bounds.extents.x);
+        float y = Random.Range(downCollider.position.y - downCollider.GetComponent<Collider2D>().bounds.extents.y, downCollider.position.y + downCollider.GetComponent<Collider2D>().bounds.extents.y);
+        spawnPosition = new Vector2(x, y);
         transform.position = spawnPosition;
         gameObject.layer = Layers.Toxine;
         _iRotable = new ToxineRotable(0.1f, transform);
@@ -44,9 +48,15 @@ public class Toxine : MonoBehaviour {
         return this;
     }
 
-    public Toxine SetPosition(float x, float y)
+    public Toxine SetPosition()
     {
-        spawnPosition = new Vector3(x, y);
+        transform.position = spawnPosition;
+        return this;
+    }
+
+    public Toxine SetCollider(Transform trans)
+    {
+        downCollider = trans;
         return this;
     }
 
