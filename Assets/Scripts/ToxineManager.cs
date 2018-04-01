@@ -28,7 +28,7 @@ public class ToxineManager : MonoBehaviour
         while (true)
         {
             for (int i = Random.Range(1, 4); i > 0; i--)
-                _toxinePool.GetObjectFromPool().SetSpeed(1f).SetCollider(downCollider).SetSprite(toxinePrefab.GetComponent<SpriteRenderer>());
+                _toxinePool.GetObjectFromPool().SetSpeed(VelocityManager.GetGameVelocity()).SetCollider(downCollider).SetSprite(toxinePrefab.GetComponent<SpriteRenderer>());
             yield return new WaitForSeconds(_spawnTimer);
         }
     }

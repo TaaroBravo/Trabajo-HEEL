@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour {
 
     //Debería ser una variable estática que también cambie la velocidad de las toxinas.
-    public float levelSpeed;
+    private float levelSpeed;
 
     private float _verticalSize;
 
@@ -25,6 +25,8 @@ public class ParallaxBackground : MonoBehaviour {
 
 	void Update ()
     {
+        levelSpeed = VelocityManager.GetGameVelocity();
+
         backgroundParts[0].transform.position += Vector3.down * levelSpeed * Time.deltaTime;
         backgroundParts[1].transform.position += Vector3.down * levelSpeed * Time.deltaTime;
 

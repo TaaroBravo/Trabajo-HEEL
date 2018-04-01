@@ -13,7 +13,7 @@ public class Toxine : MonoBehaviour {
 	
     void Start()
     {
-        float x = Random.Range(downCollider.position.x - downCollider.GetComponent<Collider2D>().bounds.extents.x, downCollider.position.x + downCollider.GetComponent<Collider2D>().bounds.extents.x);
+        float x = Mathf.RoundToInt(Random.Range(downCollider.position.x - downCollider.GetComponent<Collider2D>().bounds.extents.x, downCollider.position.x + downCollider.GetComponent<Collider2D>().bounds.extents.x));
         float y = Random.Range(downCollider.position.y - downCollider.GetComponent<Collider2D>().bounds.extents.y, downCollider.position.y + downCollider.GetComponent<Collider2D>().bounds.extents.y);
         spawnPosition = new Vector2(x, y);
         transform.position = spawnPosition;
@@ -23,6 +23,7 @@ public class Toxine : MonoBehaviour {
 
 	void Update ()
     {
+        _speed = VelocityManager.GetGameVelocity();
         transform.position += Vector3.up * _speed * Time.deltaTime;
         _iRotable.Update();
     }
