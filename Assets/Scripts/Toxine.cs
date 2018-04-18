@@ -8,28 +8,16 @@ public class Toxine : MonoBehaviour {
     private Vector3 spawnPosition;
     private SpriteRenderer sprite;
 
-    private IRotable _iRotable;
-    private Transform downCollider;
-	
-    void Start()
-    {
-        float x = Mathf.RoundToInt(Random.Range(downCollider.position.x - downCollider.GetComponent<Collider2D>().bounds.extents.x, downCollider.position.x + downCollider.GetComponent<Collider2D>().bounds.extents.x));
-        float y = Random.Range(downCollider.position.y - downCollider.GetComponent<Collider2D>().bounds.extents.y, downCollider.position.y + downCollider.GetComponent<Collider2D>().bounds.extents.y);
-        spawnPosition = new Vector2(x, y);
-        transform.position = spawnPosition;
-        gameObject.layer = Layers.Toxine;
-        _iRotable = new ToxineRotable(0.1f, transform);
-    }
-
 	void Update ()
     {
-        _speed = VelocityManager.GetGameVelocity();
         transform.position += Vector3.up * _speed * Time.deltaTime;
-        _iRotable.Update();
     }
 
     public void Initialize()
     {
+        transform.position = spawnPosition;
+        gameObject.layer = Layers.Toxine;
+        GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     public static void InitializeBullet(Toxine toxineObj)
@@ -52,12 +40,6 @@ public class Toxine : MonoBehaviour {
     public Toxine SetPosition()
     {
         transform.position = spawnPosition;
-        return this;
-    }
-
-    public Toxine SetCollider(Transform trans)
-    {
-        downCollider = trans;
         return this;
     }
 

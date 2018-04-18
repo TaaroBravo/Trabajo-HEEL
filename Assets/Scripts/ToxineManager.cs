@@ -6,7 +6,6 @@ public class ToxineManager : MonoBehaviour
 {
 
     public Toxine toxinePrefab;
-    public Transform downCollider;
     public int numberToxines;
     private Pool<Toxine> _toxinePool;
 
@@ -27,16 +26,16 @@ public class ToxineManager : MonoBehaviour
     {
         while (true)
         {
-            for (int i = Random.Range(1, 4); i > 0; i--)
-                _toxinePool.GetObjectFromPool().SetSpeed(VelocityManager.GetGameVelocity()).SetCollider(downCollider).SetSprite(toxinePrefab.GetComponent<SpriteRenderer>());
-            yield return new WaitForSeconds(_spawnTimer);
+            //for (int i = Random.Range(1, 4); i > 0; i--)
+            //    _toxinePool.GetObjectFromPool().SetSpeed(VelocityManager.GetGameVelocity()).SetCollider(downCollider).SetSprite(toxinePrefab.GetComponent<SpriteRenderer>());
+            //yield return new WaitForSeconds(_spawnTimer);
         }
     }
 
-    private void Update()
-    {
-
-    }
+    //private void Update()
+    //{
+    //    _spawnTimer = 5 / VelocityManager.GetGameVelocity();
+    //}
 
     private Toxine BulletFactory()
     {
